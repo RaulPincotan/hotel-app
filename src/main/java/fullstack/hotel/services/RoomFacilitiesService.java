@@ -12,10 +12,4 @@ import java.util.List;
 public class RoomFacilitiesService {
 
     private final RoomFacilitiesRepository roomFacilitiesRepository;
-
-    public List<RoomFacilities> getRoomFacilitiesForRoom(Long roomId) {
-        return roomFacilitiesRepository.findAll();
-    }
-
-
 }
