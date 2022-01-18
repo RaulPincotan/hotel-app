@@ -2,6 +2,7 @@ package fullstack.hotel.controller;
 
 import fullstack.hotel.model.RoomFilters;
 import fullstack.hotel.model.entity.Room;
+import fullstack.hotel.model.entity.RoomFacilities;
 import fullstack.hotel.services.RoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -33,5 +34,10 @@ public class RoomController {
     @PutMapping("/{id}")
     public Room replaceRoom(@PathVariable Long id,@RequestBody Room room) {
         return roomService.replaceRoom(id,room);
+    }
+
+    @GetMapping("/{id}/facilities")
+    public RoomFacilities getFacilitiesForRoom(@PathVariable Long id) {
+        return roomService.getFacilitiesForRoom(id);
     }
 }
