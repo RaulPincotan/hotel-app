@@ -4,6 +4,7 @@ package fullstack.hotel.services;
 import fullstack.hotel.exceptions.RoomException;
 import fullstack.hotel.model.RoomFilters;
 import fullstack.hotel.model.entity.Room;
+import fullstack.hotel.model.entity.RoomFacilities;
 import fullstack.hotel.repositories.RoomDAO;
 import fullstack.hotel.repositories.RoomRepository;
 import lombok.RequiredArgsConstructor;
@@ -54,4 +55,12 @@ public class RoomService {
         room.ifPresent(room1 -> repository.delete(room1));
         return room;
     }
+
+    public RoomFacilities getFacilitiesForRoom(Long id) {
+        Optional<Room> room = repository.findById(id);
+        return Optional.of(room.get().getRoomFacilities())
+                .orElseThrow(() -> new RoomException("Room with id " + id + " doesent exist"));
+    }
+
+
 }
