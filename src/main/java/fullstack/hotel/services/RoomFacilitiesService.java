@@ -12,4 +12,8 @@ import java.util.List;
 public class RoomFacilitiesService {
 
     private final RoomFacilitiesRepository roomFacilitiesRepository;
+
+    public Optional<RoomFacilities> getRoomFacilitiesForRoom(Long roomId) {
+        return roomFacilitiesRepository.findById(roomId);
+    }
 }

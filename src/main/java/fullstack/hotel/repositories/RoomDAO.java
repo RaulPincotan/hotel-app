@@ -27,13 +27,13 @@ public class RoomDAO {
         Root<Room> roomRoot = criteria.from(Room.class);
         Join<Room, RoomFacilities> roomFacilitiesJoin = roomRoot.join("roomFacilities");
 
-        List<Predicate> whereClause = getBuildedClauses(filters, roomRoot, roomFacilitiesJoin);
+        List<Predicate> whereClause = getClauses(filters, roomRoot, roomFacilitiesJoin);
 
         CriteriaQuery<Room> query = criteria.select(roomRoot).where(whereClause.toArray(whereClause.toArray(new Predicate[0])));
         return entityManager.createQuery(query).getResultList();
     }
 
-    private List<Predicate> getBuildedClauses(RoomFilters filters, Root<Room> roomRoot, Join<Room, RoomFacilities> roomFacilitiesJoin) {
+    private List<Predicate> getClauses(RoomFilters filters, Root<Room> roomRoot, Join<Room, RoomFacilities> roomFacilitiesJoin) {
         List<Predicate> clauses = new ArrayList<>();
         Optional.ofNullable(filters.getFloor())
                 .ifPresent(floor -> clauses.add(criteriaBuilder.equal(roomRoot.get("floor"), floor)));
@@ -45,10 +45,10 @@ public class RoomDAO {
 //                 .ifPresent(rating->clauses.add(criteriaBuilder.greaterThan(roomReviewJoin.get("rating"),rating)));
 
         Optional.ofNullable(filters.getDoubleBed())
-                .ifPresent(doubleBed->clauses.add(criteriaBuilder.equal(roomFacilitiesJoin.get("doubleBed"),doubleBed)));
+                .ifPresent(doubleBed -> clauses.add(criteriaBuilder.equal(roomFacilitiesJoin.get("doubleBed"), doubleBed)));
 
         Optional.ofNullable(filters.getTv())
-                .ifPresent(tv->clauses.add(criteriaBuilder.equal(roomFacilitiesJoin.get("tv"),tv)));
+                .ifPresent(tv -> clauses.add(criteriaBuilder.equal(roomFacilitiesJoin.get("tv"), tv)));
         return new ArrayList<>(clauses);
     }
 }
