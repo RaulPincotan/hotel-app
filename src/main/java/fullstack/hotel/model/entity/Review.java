@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 
+@Table(name = "review")
 @Entity
 @Getter
 @Setter
@@ -16,8 +17,9 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "message",length = 200)
+    @Column(name = "message", length = 200)
     private String message;
+
     @Column(name = "rating")
     private int rating;
 
@@ -25,6 +27,7 @@ public class Review {
     private String touristName;
 
     @ManyToOne
+    @JoinColumn(name = "room_id")
     private Room room;
 
 

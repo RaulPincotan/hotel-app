@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-
+@Table(name = "cleanup_room")
 @Entity
 @Data
 @AllArgsConstructor
@@ -18,8 +18,11 @@ public class CleanupRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "date")
     private LocalDate date;
+
+    @Column(name = "procedures")
     private String procedures;
 
     @ManyToOne

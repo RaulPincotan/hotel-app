@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Table(name = "room_facilities")
 @Entity
 @Data
 @AllArgsConstructor
@@ -17,7 +18,10 @@ public class RoomFacilities {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "has_tv")
+
+    @Column(name = "tv")
     private boolean tv;
+
+    @Column(name = "double_bed")
     private boolean doubleBed;
 }
