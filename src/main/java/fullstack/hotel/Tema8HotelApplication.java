@@ -10,4 +10,9 @@ public class Tema8HotelApplication {
 		SpringApplication.run(Tema8HotelApplication.class, args);
 	}
 
+	// adding the latest patch
+	public void addPatch(){
+		// dummy method for testing purpose
+	}
+
 }
