@@ -17,5 +17,7 @@ public class Tema8HotelApplication {
 	// check the latest release
 	public void checkReleaseVersion(){
 		// dummy method for testing purpose
+		// addding ..
+		
 	}
 }
